@@ -5,6 +5,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\MarcaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +54,9 @@ Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('c
 Route::put('/clientes/{cliente}/toggle', [ClienteController::class, 'eliminarEstado'])->name('clientes.eliminarEstado');
 
 //rutas para marca
-Route::get('/marcas', [ClienteController::class, 'index'])->name('marcas.index');
-Route::post('/marcas', [ClienteController::class, 'store'])->name('marcas.store');
+Route::get('/marcas', [MarcaController::class, 'index'])->name('marcas.index');
+Route::post('/marcas', [MarcaController::class, 'store'])->name('marcas.store');
 
-Route::get('/marcas/{marca}/edit', [ClienteController::class, 'edit'])->name('marcas.edit');
-Route::put('/marcas/{marca}', [ClienteController::class, 'update'])->name('marcas.update');
-Route::put('/marcas/{marca}/toggle', [ClienteController::class, 'eliminarEstado'])->name('marcas.eliminarEstado');
+Route::get('/marcas/{marca}/edit', [MarcaController::class, 'edit'])->name('marcas.edit');
+Route::put('/marcas/{marca}', [MarcaController::class, 'update'])->name('marcas.update');
+Route::put('/marcas/{marca}/toggle', [MarcaController::class, 'eliminarEstado'])->name('marcas.eliminarEstado');

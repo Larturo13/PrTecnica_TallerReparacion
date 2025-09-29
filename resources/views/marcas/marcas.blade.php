@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Clientes')
+@section('title', 'Marcas')
 
 @section('content')
 <!DOCTYPE html>
@@ -16,11 +16,11 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <h1 class="h2">Clientes</h1>
+          <h1 class="h2">Marcas</h1>
         </div>
         <div class="row g-5">
           <div class="">
-            <h4 class="mb-3">Formulario de Clientes</h4>
+            <h4 class="mb-3">Formulario de Marcas</h4>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -34,80 +34,45 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                 </div>
             @endif
-            <form class="needs-validation" action="{{ route('clientes.store')}}" method="POST"> 
+            <form class="needs-validation" action="{{ route('marcas.store')}}" method="POST"> 
                 @csrf
               <div class="row g-3">
-                <div class="col-sm-3">
-                  <label class="form-label">Nombre</label>
-                  <input type="text" class="form-control" placeholder="" name="nombre" required/>
-                  <div class="invalid-feedback">
-                    Requerido
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <label class="form-label">Apellido</label>
-                  <input type="text" class="form-control" placeholder="" name="apellido" required/>
-                  <div class="invalid-feedback">
-                    Requerido
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label">Direccion</label>
-                  <input type="text" class="form-control" placeholder="" name="direccion" required/>
-                  <div class="invalid-feedback">
-                    Requerido
-                  </div>
-                </div>
+                
                 <div class="row g-3 align-items-end">
                     <div class="col-sm-6">
-                    <label class="form-label">Telefono</label>
-                    <input type="text" class="form-control" placeholder="" name="telefono" required/>
+                    <label class="form-label">Nombre Marca</label>
+                    <input type="text" class="form-control" placeholder="" name="nombre_marca" required/>
                     <div class="invalid-feedback">
                         Requerido
                     </div>
                     </div>
-                    <div class="col-sm-3">
-                    <label class="form-label">Correo</label>
-                    <input type="email" class="form-control" placeholder="" name="correo" required/>
-                    <div class="invalid-feedback">
-                        Requerido
-                    </div>
-                    </div>
-                    <div class="col-3 d-flex justify-content-end">
+                    <div class="col-6 d-flex justify-content-end">
                         <button class="btn btn-primary btn-lg" type="submit">Enviar</button>
                     </div>
                 </div>
 
 
             </form>
-            <h4 class="mb-3">Listado de Clientes</h4>
+            <h4 class="mb-3">Listado de Marcas</h4>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Correo</th>
+                        <th scope="col">Nombre de Marca</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    @forelse($clientes as $index => $cliente)
+                    @forelse($marcas as $index => $marca)
                         <tr>
                             <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{ $cliente->nombre}}</td> 
-                            <td>{{ $cliente->apellido }}</td>
-                            <td>{{ $cliente->direccion }}</td>
-                            <td>{{ $cliente->telefono }}</td>
-                            <td>{{ $cliente->correo }}</td>
+                            <td>{{ $marca->nombre_marca}}</td> 
                             <td>
-                                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('marcas.edit', $marca->id) }}" class="btn btn-warning btn-sm">
                                     Editar
                                 </a>
                             </td>
                             <td>
-                            <form action="{{ route('clientes.eliminarEstado', $cliente->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('marcas.eliminarEstado', $marca->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="btn btn-danger btn-sm"

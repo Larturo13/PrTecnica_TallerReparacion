@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Marca;
 
 class MarcaController extends Controller
 {
@@ -14,16 +15,11 @@ class MarcaController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+        $marcas = Marca::where('estado', '!=', 0)->latest()->get();
         //
+
+
+        return view('marcas.marcas', compact('marcas'));
     }
 
     /**
@@ -34,51 +30,53 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $request->validate([
+                'nombre_marca' => 'required|string|max:50',
+            ]);
+
+            $marca = new marca;
+            $marca->nombre_marca = $request->nombre_marca;
+            $marca->estado = $request->estado ?? 1;
+            $marca->save();
+
+            return redirect()->route('marcas.index')
+                            ->with('success', 'Marca agregado correctamente');
+
+        } catch (\Exception $e) {
+            return redirect()->route('marcas.index')
+                            ->with('error', 'No se pudo guardar el Marca: '.$e->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Marca $marca)
     {
-        //
+        return view('marcas.edit', compact('marca'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Marca $marca)
     {
-        //
+        $request->validate([
+            'nombre_marca' => 'required|string|max:50',
+        ]);
+
+
+        $marca->nombre_marca = $request->nombre_marca;
+
+        $marca->save();
+
+
+        return redirect()
+            ->route('marcas.index')
+            ->with('success', 'Marca actualizado correctamente');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function eliminarEstado(Marca $marca)
     {
-        //
-    }
+        $marca->estado = 0; // cambiar a inactivo
+        $marca->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('marcas.index')
+            ->with('success', 'Marca eliminado correctamente');
     }
 }

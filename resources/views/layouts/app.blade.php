@@ -31,9 +31,14 @@
                         <a class="nav-link" href="{{ route('equipos.index') }}">Equipos</a>
                     </li>
                 </ul>
-                                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('marcas.index') }}">Marca</a>
                     </li>
                 </ul>
             </div>
