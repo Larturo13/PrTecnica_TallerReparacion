@@ -18,16 +18,13 @@ use App\Http\Controllers\MarcaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 //rutas para servicios
-Route::get('/servicios', [ServicioController::class, 'index'])->name('servicios.index');
-Route::post('/servicios', [ServicioController::class, 'store'])->name('servicios.store');
+Route::get('/', [ServicioController::class, 'index'])->name('servicios.index');
+Route::post('/', [ServicioController::class, 'store'])->name('servicios.store');
 
-Route::get('/servicios/{servicio}/edit', [ServicioController::class, 'edit'])->name('servicios.edit');
-Route::put('/servicios/{servicio}', [ServicioController::class, 'update'])->name('servicios.update');
-Route::put('/servicios/{servicio}/toggle', [ServicioController::class, 'EliminacionEstado'])->name('servicios.eliminarEstado');
+Route::get('/{servicio}/edit', [ServicioController::class, 'edit'])->name('servicios.edit');
+Route::put('/{servicio}', [ServicioController::class, 'update'])->name('servicios.update');
+Route::put('/{servicio}/toggle', [ServicioController::class, 'EliminacionEstado'])->name('servicios.eliminarEstado');
 
 //rutas para usuarios
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
