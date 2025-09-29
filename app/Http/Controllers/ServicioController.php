@@ -42,10 +42,6 @@ class ServicioController extends Controller
                 'tecnico_id' => 'required|exists:usuarios,id',
                 'fecha_recepcion' => 'required|date',
                 'problema_reportado' => 'required|string|max:250',
-                // 'estado_servicio' => 'required|integer',
-                // 'diagnostico' => 'sometimes|string|max:250',
-                // 'solucion' => 'sometimes|string|max:250',
-                // 'fecha_entrega' => 'sometimes|date',
 
             ]);
 
@@ -89,18 +85,18 @@ class ServicioController extends Controller
             'estado' => 'required|boolean',
         ]);
 
-        $servicio->update($request->only([
-            'equipo_id',
-            'cliente_id',
-            'tecnico_id',
-            'fecha_recepcion',
-            'problema_reportado',
-            'diagnostico',
-            'solucion',
-            'fecha_entrega',
-            'estado_servicio',
-            'estado'
-        ]));
+
+        $servicio -> equipo_id = $request->equipo_id;
+        $servicio -> cliente_id = $request->cliente_id;
+        $servicio -> tecnico_id = $request->tecnico_id;
+        $servicio -> fecha_recepcion = $request->fecha_recepcion;
+        $servicio -> problema_reportado = $request->problema_reportado;
+        $servicio -> diagnostico = $request->diagnostico;
+        $servicio -> solucion = $request->solucion;
+        $servicio -> fecha_entrega = $request->fecha_entrega;
+        $servicio -> estado_servicio = $request->estado_servicio;
+        $servicio -> estado = $request->estado;
+        $servicio->save();
 
         return redirect()->route('servicios.index')->with('success', 'Servicio actualizado correctamente');
     }
