@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,19 @@ use App\Http\Controllers\ServicioController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//rutas para servicios
 Route::get('/servicios', [ServicioController::class, 'index'])->name('servicios.index');
 Route::post('/servicios', [ServicioController::class, 'store'])->name('servicios.store');
 
 Route::get('/servicios/{servicio}/edit', [ServicioController::class, 'edit'])->name('servicios.edit');
 Route::put('/servicios/{servicio}', [ServicioController::class, 'update'])->name('servicios.update');
 Route::put('/servicios/{servicio}/toggle', [ServicioController::class, 'EliminacionEstado'])->name('servicios.eliminarEstado');
+
+//rutas para usuarios
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
+Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
+
+Route::get('/usuarios/{usuario}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{usuario}', [UsuarioController::class, 'update'])->name('usuarios.update');
+Route::put('/usuarios/{usuario}/toggle', [UsuarioController::class, 'eliminarEstado'])->name('usuarios.eliminarEstado');
 

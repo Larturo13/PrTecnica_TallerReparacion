@@ -70,7 +70,7 @@ class ServicioController extends Controller
 
     public function edit(Servicio $servicio)
     {
-        $usuarios = Usuario::all(); // Para el select de técnicos
+        $usuarios = Usuario::all(); 
         return view('servicios.edit', compact('servicio', 'usuarios'));
     }
 

@@ -30,7 +30,7 @@ class Servicio extends Model
         'fecha_recepcion' => 'datetime',
         'fecha_entrega' => 'datetime',
     ];
-        protected $fillable = [
+    protected $fillable = [
         'equipo_id',
         'cliente_id',
         'tecnico_id',

@@ -22,7 +22,6 @@
         <div class="row g-5">
           <div class="">
             <h4 class="mb-3">Formulario de Servicios</h4>
-            <!-- <form class="needs-validation" novalidate> -->
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -77,58 +76,16 @@
                     Requerido
                   </div>
                 </div>
-                <!-- <div class="col-12">
-                  <label class="form-label">Diagnostico</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    name="diagnostico"
-                  />
-                    <div class="invalid-feedback">
-                        Requerido
-                    </div>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Solucion</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    name="solucion"
-                  />
-                    <div class="invalid-feedback">
-                        Requerido
-                    </div>
-                </div> -->
                 <div class="row g-3 align-items-end">
                     <div class="col-sm-4">
                         <label class="form-label">Fecha de Ingreso</label>
                         <input type="date" class="form-control" name="fecha_recepcion" required/>
                         <div class="invalid-feedback">Requerido</div>
                     </div>
-                    <!-- <div class="col-sm-5">
-                        <label class="form-label">Fecha de Entrega</label>
-                        <input type="date" class="form-control" name="fecha_entrega"/>
-                        <div class="invalid-feedback">Requerido</div>
-                    </div> -->
                     <div class="col-8 d-flex justify-content-end">
                         <button class="btn btn-primary btn-lg" type="submit">Enviar</button>
                     </div>
                 </div>
-                <!-- <div class="col-md-4">
-                  <label class="form-label">Estado del Servicio</label>
-                    <select class="form-select name="estado_servicio" id="">
-                        <option value="1">Recibido</option>
-                        <option value="2">Reparando</option>
-                        <option value="3">Finalizado</option>
-                        <option value="4">Entregado</option>
-                    </select>
-                    <div class="invalid-feedback">
-                    Requerido
-                  </div>
-                </div> -->
-
             </form>
             <h4 class="mb-3">Listado de Servicios</h4>
             <table class="table">
