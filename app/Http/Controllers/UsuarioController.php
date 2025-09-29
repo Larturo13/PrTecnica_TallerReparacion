@@ -69,7 +69,7 @@ class UsuarioController extends Controller
             'nombre_completo' => 'required|string|max:100',
             'usuario' => 'required|string|max:50',
             'correo' => 'required|string|max:100',
-            'telefono' => 'nullable|string|max:20',
+            'telefono' => 'nullable|regex:/^[0-9]{8,15}$/',
             'password' => 'nullable|string|min:6|confirmed',
             'password_actual' => 'nullable|string',
         ]);

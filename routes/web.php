@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,19 @@ Route::post('/equipos', [EquipoController::class, 'store'])->name('equipos.store
 Route::get('/equipos/{equipo}/edit', [EquipoController::class, 'edit'])->name('equipos.edit');
 Route::put('/equipos/{equipo}', [EquipoController::class, 'update'])->name('equipos.update');
 Route::put('/equipos/{equipo}/toggle', [EquipoController::class, 'eliminarEstado'])->name('equipos.eliminarEstado');
+
+//rutas para clientes
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+
+Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
+Route::put('/clientes/{cliente}/toggle', [ClienteController::class, 'eliminarEstado'])->name('clientes.eliminarEstado');
+
+//rutas para marca
+Route::get('/marcas', [ClienteController::class, 'index'])->name('marcas.index');
+Route::post('/marcas', [ClienteController::class, 'store'])->name('marcas.store');
+
+Route::get('/marcas/{marca}/edit', [ClienteController::class, 'edit'])->name('marcas.edit');
+Route::put('/marcas/{marca}', [ClienteController::class, 'update'])->name('marcas.update');
+Route::put('/marcas/{marca}/toggle', [ClienteController::class, 'eliminarEstado'])->name('marcas.eliminarEstado');
